@@ -1,0 +1,21 @@
+{
+  "name": "tailwindcss-preset-email",
+  "version": "0.0.0",
+  "description": "Tailwind CSS config preset for HTML emails",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "release": "np"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/maizzle/tailwindcss-preset-email",
+  "devDependencies": {
+    "np": "^9.2.0"
+  },
+  "keywords": [
+    "tailwindcss",
+    "html-email"
+  ]
+}
