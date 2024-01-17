@@ -22,5 +22,8 @@
     "tailwindcss-box-shadow": "^2.0.1",
     "tailwindcss-email-variants": "^2.0.3",
     "tailwindcss-mso": "^1.4.1"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.4.0"
   }
 }
