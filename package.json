@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-preset-email",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Tailwind CSS config preset for HTML emails",
   "main": "src/index.js",
   "files": [
