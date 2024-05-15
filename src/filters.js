@@ -6,6 +6,7 @@ module.exports = {
     brightness: false,
     contrast: false,
     dropShadow: false,
+    grayscale: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -47,6 +48,16 @@ module.exports = {
         }),
       },
       { values: theme('dropShadow') }
+    )
+  }),
+  grayscale: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        grayscale: (value) => ({
+          filter: `grayscale(${value})`
+        }),
+      },
+      { values: theme('grayscale') }
     )
   }),
 }

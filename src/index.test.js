@@ -174,4 +174,32 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('grayscale', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="grayscale">
+            <hr class="grayscale-0">
+            <hr class="grayscale-[50%]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .grayscale {
+          filter: grayscale(100%)
+        }
+        .grayscale-0 {
+          filter: grayscale(0)
+        }
+        .grayscale-\[50\%\] {
+          filter: grayscale(50%)
+        }
+      `)
+    })
+  })
 })
