@@ -426,4 +426,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropInvert', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-invert">
+            <hr class="backdrop-invert-[.25]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-invert {
+          backdrop-filter: invert(100%)
+        }
+        .backdrop-invert-\[\.25\] {
+          backdrop-filter: invert(.25)
+        }
+      `)
+    })
+  })
 })

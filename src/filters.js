@@ -16,6 +16,7 @@ module.exports = {
     backdropContrast: false,
     backdropGrayscale: false,
     backdropHueRotate: false,
+    backdropInvert: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -157,6 +158,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropHueRotate'), supportsNegativeValues: true }
+    )
+  }),
+  backdropInvert: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-invert': (value) => ({
+          backdropFilter: `invert(${value})`
+        }),
+      },
+      { values: theme('backdropInvert') }
     )
   }),
 }
