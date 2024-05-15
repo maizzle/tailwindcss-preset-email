@@ -14,6 +14,7 @@ module.exports = {
     backdropBlur: false,
     backdropBrightness: false,
     backdropContrast: false,
+    backdropGrayscale: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -135,6 +136,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropContrast') }
+    )
+  }),
+  backdropGrayscale: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-grayscale': (value) => ({
+          backdropFilter: `grayscale(${value})`
+        }),
+      },
+      { values: theme('backdropGrayscale') }
     )
   }),
 }

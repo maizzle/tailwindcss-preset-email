@@ -374,4 +374,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropGrayscale', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-grayscale">
+            <hr class="backdrop-grayscale-[.5]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-grayscale {
+          backdrop-filter: grayscale(100%)
+        }
+        .backdrop-grayscale-\[\.5\] {
+          backdrop-filter: grayscale(.5)
+        }
+      `)
+    })
+  })
 })
