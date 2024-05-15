@@ -7,6 +7,7 @@ module.exports = {
     contrast: false,
     dropShadow: false,
     grayscale: false,
+    hueRotate: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -58,6 +59,16 @@ module.exports = {
         }),
       },
       { values: theme('grayscale') }
+    )
+  }),
+  hueRotate: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'hue-rotate': (value) => ({
+          filter: `hue-rotate(${value})`
+        }),
+      },
+      { values: theme('hueRotate'), supportsNegativeValues: true }
     )
   }),
 }

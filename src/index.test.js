@@ -202,4 +202,32 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('hueRotate', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="hue-rotate-180">
+            <hr class="-hue-rotate-60">
+            <hr class="hue-rotate-[90deg]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .-hue-rotate-60 {
+          filter: hue-rotate(-60deg)
+        }
+        .hue-rotate-180 {
+          filter: hue-rotate(180deg)
+        }
+        .hue-rotate-\[90deg\] {
+          filter: hue-rotate(90deg)
+        }
+      `)
+    })
+  })
 })
