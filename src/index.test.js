@@ -98,4 +98,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('brightness', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="brightness-50">
+            <hr class="brightness-[.33]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .brightness-50 {
+          filter: brightness(.5)
+        }
+        .brightness-\[\.33\] {
+          filter: brightness(.33)
+        }
+      `)
+    })
+  })
 })
