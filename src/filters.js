@@ -13,6 +13,7 @@ module.exports = {
     sepia: false,
     backdropBlur: false,
     backdropBrightness: false,
+    backdropContrast: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -124,6 +125,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropBrightness') }
+    )
+  }),
+  backdropContrast: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-contrast': (value) => ({
+          backdropFilter: `contrast(${value})`
+        }),
+      },
+      { values: theme('backdropContrast') }
     )
   }),
 }

@@ -350,4 +350,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropContrast', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-contrast-50">
+            <hr class="backdrop-contrast-[1.75]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-contrast-50 {
+          backdrop-filter: contrast(.5)
+        }
+        .backdrop-contrast-\[1\.75\] {
+          backdrop-filter: contrast(1.75)
+        }
+      `)
+    })
+  })
 })
