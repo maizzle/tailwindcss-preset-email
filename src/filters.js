@@ -8,6 +8,7 @@ module.exports = {
     dropShadow: false,
     grayscale: false,
     hueRotate: false,
+    invert: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -69,6 +70,16 @@ module.exports = {
         }),
       },
       { values: theme('hueRotate'), supportsNegativeValues: true }
+    )
+  }),
+  invert: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        invert: (value) => ({
+          filter: `invert(${value})`
+        }),
+      },
+      { values: theme('invert') }
     )
   }),
 }

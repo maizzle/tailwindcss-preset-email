@@ -230,4 +230,24 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('invert', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="invert">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .invert {
+          filter: invert(100%)
+        }
+      `)
+    })
+  })
 })
