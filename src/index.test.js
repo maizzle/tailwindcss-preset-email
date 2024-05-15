@@ -237,6 +237,7 @@ describe('Filters', () => {
         {
           raw: String.raw`
             <hr class="invert">
+            <hr class="invert-[.25]">
           `
         }
       ],
@@ -246,6 +247,9 @@ describe('Filters', () => {
       expect(result.css).toMatchCss(String.raw`
         .invert {
           filter: invert(100%)
+        }
+        .invert-\[\.25\] {
+          filter: invert(.25)
         }
       `)
     })
