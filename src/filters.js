@@ -17,6 +17,7 @@ module.exports = {
     backdropGrayscale: false,
     backdropHueRotate: false,
     backdropInvert: false,
+    backdropOpacity: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -168,6 +169,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropInvert') }
+    )
+  }),
+  backdropOpacity: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-opacity': (value) => ({
+          backdropFilter: `opacity(${value})`
+        }),
+      },
+      { values: theme('backdropOpacity') }
     )
   }),
 }

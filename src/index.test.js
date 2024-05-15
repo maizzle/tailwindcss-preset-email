@@ -450,4 +450,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropOpacity', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-opacity-5">
+            <hr class="backdrop-opacity-[.25]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-opacity-5 {
+          backdrop-filter: opacity(0.05)
+        }
+        .backdrop-opacity-\[\.25\] {
+          backdrop-filter: opacity(.25)
+        }
+      `)
+    })
+  })
 })
