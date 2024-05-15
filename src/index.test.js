@@ -278,4 +278,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('sepia', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="sepia-0">
+            <hr class="sepia-[.25]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .sepia-0 {
+          filter: sepia(0)
+        }
+        .sepia-\[\.25\] {
+          filter: sepia(.25)
+        }
+      `)
+    })
+  })
 })

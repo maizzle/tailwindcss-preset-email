@@ -10,6 +10,7 @@ module.exports = {
     hueRotate: false,
     invert: false,
     saturate: false,
+    sepia: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -91,6 +92,16 @@ module.exports = {
         }),
       },
       { values: theme('saturate') }
+    )
+  }),
+  sepia: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        sepia: (value) => ({
+          filter: `sepia(${value})`
+        }),
+      },
+      { values: theme('sepia') }
     )
   }),
 }
