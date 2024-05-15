@@ -19,6 +19,7 @@ module.exports = {
     backdropInvert: false,
     backdropOpacity: false,
     backdropSaturate: false,
+    backdropSepia: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -190,6 +191,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropSaturate') }
+    )
+  }),
+  backdropSepia: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-sepia': (value) => ({
+          backdropFilter: `sepia(${value})`
+        }),
+      },
+      { values: theme('backdropSepia') }
     )
   }),
 }

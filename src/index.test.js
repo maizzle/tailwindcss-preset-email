@@ -498,4 +498,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropSepia', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-sepia">
+            <hr class="backdrop-sepia-[.25]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-sepia {
+          backdrop-filter: sepia(100%)
+        }
+        .backdrop-sepia-\[\.25\] {
+          backdrop-filter: sepia(.25)
+        }
+      `)
+    })
+  })
 })
