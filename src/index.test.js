@@ -122,4 +122,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('contrast', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="contrast-50">
+            <hr class="contrast-[.33]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .contrast-50 {
+          filter: contrast(.5)
+        }
+        .contrast-\[\.33\] {
+          filter: contrast(.33)
+        }
+      `)
+    })
+  })
 })

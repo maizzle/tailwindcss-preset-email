@@ -4,6 +4,7 @@ module.exports = {
   disabledFilterPlugins: {
     blur: false,
     brightness: false,
+    contrast: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -23,6 +24,16 @@ module.exports = {
         }),
       },
       { values: theme('brightness') }
+    )
+  }),
+  contrast: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        contrast: (value) => ({
+          filter: `contrast(${value})`
+        }),
+      },
+      { values: theme('contrast') }
     )
   }),
 }
