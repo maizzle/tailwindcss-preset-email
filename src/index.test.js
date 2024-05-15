@@ -146,4 +146,32 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('dropShadow', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="drop-shadow-sm">
+            <hr class="drop-shadow">
+            <hr class="drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .drop-shadow {
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06))
+        }
+        .drop-shadow-\[0_35px_35px_rgba\(0\2c 0\2c 0\2c 0\.25\)\] {
+          filter: drop-shadow(0 35px 35px rgba(0,0,0,0.25))
+        }
+        .drop-shadow-sm {
+          filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05))
+        }
+      `)
+    })
+  })
 })

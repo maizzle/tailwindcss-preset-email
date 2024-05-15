@@ -5,6 +5,7 @@ module.exports = {
     blur: false,
     brightness: false,
     contrast: false,
+    dropShadow: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -34,6 +35,18 @@ module.exports = {
         }),
       },
       { values: theme('contrast') }
+    )
+  }),
+  dropShadow: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'drop-shadow': (value) => ({
+          filter: Array.isArray(value)
+            ? value.map((v) => `drop-shadow(${v})`).join(' ')
+            : `drop-shadow(${value})`
+        }),
+      },
+      { values: theme('dropShadow') }
     )
   }),
 }
