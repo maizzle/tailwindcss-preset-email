@@ -1,5 +1,10 @@
 const plugin = require('tailwindcss/plugin')
 
+const {
+  disabledFilterPlugins,
+  ...filterPlugins
+} = require('./filters')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
@@ -123,6 +128,7 @@ module.exports = {
       }),
     },
   },
+  // We disable all core plugins that we redefine
   corePlugins: {
     preflight: false,
     backgroundOpacity: false,
@@ -131,11 +137,18 @@ module.exports = {
     placeholderOpacity: false,
     textOpacity: false,
     textDecoration: false,
+    ...disabledFilterPlugins,
   },
   plugins: [
+    // Filters
+    ...Object.values(filterPlugins),
+    // MSO utilities
     require('tailwindcss-mso'),
+    // Email-safe box-shadow utilities
     require('tailwindcss-box-shadow'),
+    // Email client targeting variants
     require('tailwindcss-email-variants'),
+    // Text decoration utilities
     plugin(function({ addUtilities }) {
       addUtilities({
         '.underline': { 'text-decoration': 'underline' },

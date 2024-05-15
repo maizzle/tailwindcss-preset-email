@@ -1,7 +1,7 @@
 import path from 'path'
 import postcss from 'postcss'
 import emailPreset from '.'
-import { expect, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import tailwindcss from 'tailwindcss'
 
 // Custom CSS matcher
@@ -10,7 +10,9 @@ expect.extend({
   // This is probably naive but it's fast and works well enough.
   toMatchCss(received, argument) {
     function stripped(string_) {
-      return string_.replaceAll(/\s/g, '').replaceAll(';', '')
+      return string_
+        .replaceAll(/\s/g, '')
+        .replaceAll(';', '')
     }
 
     const pass = stripped(received) === stripped(argument)
@@ -45,10 +47,10 @@ test('textDecoration', () => {
     content: [
       {
         raw: String.raw`
-          <div class="underline"></div>
-          <div class="overline"></div>
-          <div class="line-through"></div>
-          <div class="no-underline"></div>
+          <hr class="underline">
+          <hr class="overline">
+          <hr class="line-through">
+          <hr class="no-underline">
         `
       }
     ],
@@ -56,18 +58,44 @@ test('textDecoration', () => {
 
   return run(config).then(result => {
     expect(result.css).toMatchCss(String.raw`
-        .underline {
-          text-decoration: underline;
-        }
-        .overline {
-          text-decoration: overline;
-        }
-        .line-through {
-          text-decoration: line-through;
-        }
-        .no-underline {
-          text-decoration: none;
-        }
+      .underline {
+        text-decoration: underline
+      }
+      .overline {
+        text-decoration: overline
+      }
+      .line-through {
+        text-decoration: line-through
+      }
+      .no-underline {
+        text-decoration: none
+      }
     `)
+  })
+})
+
+describe('Filters', () => {
+  test('blur', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="blur-xl">
+            <hr class="blur-[2px]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .blur-\[2px\] {
+          filter: blur(2px)
+        }
+        .blur-xl {
+          filter: blur(24px)
+        }
+      `)
+    })
   })
 })
