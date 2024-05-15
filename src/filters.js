@@ -15,6 +15,7 @@ module.exports = {
     backdropBrightness: false,
     backdropContrast: false,
     backdropGrayscale: false,
+    backdropHueRotate: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -146,6 +147,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropGrayscale') }
+    )
+  }),
+  backdropHueRotate: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-hue-rotate': (value) => ({
+          backdropFilter: `hue-rotate(${value})`
+        }),
+      },
+      { values: theme('backdropHueRotate'), supportsNegativeValues: true }
     )
   }),
 }

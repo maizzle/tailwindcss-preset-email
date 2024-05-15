@@ -398,4 +398,32 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropHueRotate', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-hue-rotate-15">
+            <hr class="-backdrop-hue-rotate-15">
+            <hr class="backdrop-hue-rotate-[35deg]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .-backdrop-hue-rotate-15 {
+          backdrop-filter: hue-rotate(-15deg)
+        }
+        .backdrop-hue-rotate-15 {
+          backdrop-filter: hue-rotate(15deg)
+        }
+        .backdrop-hue-rotate-\[35deg\] {
+          backdrop-filter: hue-rotate(35deg)
+        }
+      `)
+    })
+  })
 })
