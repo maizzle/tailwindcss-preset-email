@@ -9,6 +9,7 @@ module.exports = {
     grayscale: false,
     hueRotate: false,
     invert: false,
+    saturate: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -80,6 +81,16 @@ module.exports = {
         }),
       },
       { values: theme('invert') }
+    )
+  }),
+  saturate: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        saturate: (value) => ({
+          filter: `saturate(${value})`
+        }),
+      },
+      { values: theme('saturate') }
     )
   }),
 }

@@ -250,4 +250,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('saturate', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="saturate-0">
+            <hr class="saturate-[.25]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .saturate-0 {
+          filter: saturate(0)
+        }
+        .saturate-\[\.25\] {
+          filter: saturate(.25)
+        }
+      `)
+    })
+  })
 })
