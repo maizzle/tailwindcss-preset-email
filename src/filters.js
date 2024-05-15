@@ -18,6 +18,7 @@ module.exports = {
     backdropHueRotate: false,
     backdropInvert: false,
     backdropOpacity: false,
+    backdropSaturate: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -179,6 +180,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropOpacity') }
+    )
+  }),
+  backdropSaturate: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-saturate': (value) => ({
+          backdropFilter: `saturate(${value})`
+        }),
+      },
+      { values: theme('backdropSaturate') }
     )
   }),
 }

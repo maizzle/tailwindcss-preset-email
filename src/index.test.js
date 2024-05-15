@@ -474,4 +474,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropSaturate', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-saturate-50">
+            <hr class="backdrop-saturate-[.25]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-saturate-50 {
+          backdrop-filter: saturate(.5)
+        }
+        .backdrop-saturate-\[\.25\] {
+          backdrop-filter: saturate(.25)
+        }
+      `)
+    })
+  })
 })
