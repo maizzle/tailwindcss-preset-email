@@ -12,6 +12,7 @@ module.exports = {
     saturate: false,
     sepia: false,
     backdropBlur: false,
+    backdropBrightness: false,
   },
   blur: plugin(function({ matchUtilities, theme }) {
     matchUtilities(
@@ -113,6 +114,16 @@ module.exports = {
         }),
       },
       { values: theme('backdropBlur') }
+    )
+  }),
+  backdropBrightness: plugin(function({ matchUtilities, theme }) {
+    matchUtilities(
+      {
+        'backdrop-brightness': (value) => ({
+          backdropFilter: `brightness(${value})`
+        }),
+      },
+      { values: theme('backdropBrightness') }
     )
   }),
 }

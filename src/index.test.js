@@ -326,4 +326,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropBrightness', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-brightness-50">
+            <hr class="backdrop-brightness-[1.75]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-brightness-50 {
+          backdrop-filter: brightness(.5)
+        }
+        .backdrop-brightness-\[1\.75\] {
+          backdrop-filter: brightness(1.75)
+        }
+      `)
+    })
+  })
 })
