@@ -302,4 +302,28 @@ describe('Filters', () => {
       `)
     })
   })
+
+  test('backdropBlur', () => {
+    const config = {
+      content: [
+        {
+          raw: String.raw`
+            <hr class="backdrop-blur-sm">
+            <hr class="backdrop-blur-[2px]">
+          `
+        }
+      ],
+    }
+
+    return run(config).then(result => {
+      expect(result.css).toMatchCss(String.raw`
+        .backdrop-blur-\[2px\] {
+          backdrop-filter: blur(2px)
+        }
+        .backdrop-blur-sm {
+          backdrop-filter: blur(4px)
+        }
+      `)
+    })
+  })
 })
