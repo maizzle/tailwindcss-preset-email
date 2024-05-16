@@ -42,6 +42,34 @@ function run(config, css = '@tailwind utilities', plugin = tailwindcss) {
   })
 }
 
+test('borderSpacing', () => {
+  const config = {
+    content: [
+      {
+        raw: String.raw`
+          <hr class="border-spacing-0">
+          <hr class="border-spacing-x-1">
+          <hr class="border-spacing-y-1">
+        `
+      }
+    ],
+  }
+
+  return run(config).then(result => {
+    expect(result.css).toMatchCss(String.raw`
+      .border-spacing-0 {
+        border-spacing: 0
+      }
+      .border-spacing-x-1 {
+        border-spacing: 4px 0
+      }
+      .border-spacing-y-1 {
+        border-spacing: 0 4px
+      }
+    `)
+  })
+})
+
 test('textDecoration', () => {
   const config = {
     content: [

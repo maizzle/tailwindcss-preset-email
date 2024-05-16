@@ -1,9 +1,5 @@
 const plugin = require('tailwindcss/plugin')
-
-const {
-  disabledFilterPlugins,
-  ...filterPlugins
-} = require('./filters')
+const { disabledFilterPlugins, ...filterPlugins } = require('./filters')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -154,6 +150,7 @@ module.exports = {
     preflight: false,
     backgroundOpacity: false,
     borderOpacity: false,
+    borderSpacing: false,
     divideOpacity: false,
     placeholderOpacity: false,
     textOpacity: false,
@@ -169,6 +166,23 @@ module.exports = {
     require('tailwindcss-box-shadow'),
     // Email client targeting variants
     require('tailwindcss-email-variants'),
+    // Border-spacing utilities
+    plugin(function({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'border-spacing': (value) => ({
+            'border-spacing': value,
+          }),
+          'border-spacing-y': (value) => ({
+            'border-spacing': `0 ${value}`,
+          }),
+          'border-spacing-x': (value) => ({
+            'border-spacing': `${value} 0`,
+          }),
+        },
+        { values: theme('borderSpacing', ) }
+      )
+    }),
     // Text decoration utilities
     plugin(function({ addUtilities }) {
       addUtilities({
