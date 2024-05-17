@@ -158,14 +158,6 @@ module.exports = {
     ...disabledFilterPlugins,
   },
   plugins: [
-    // Filters
-    ...Object.values(filterPlugins),
-    // MSO utilities
-    require('tailwindcss-mso'),
-    // Email-safe box-shadow utilities
-    require('tailwindcss-box-shadow'),
-    // Email client targeting variants
-    require('tailwindcss-email-variants'),
     // Border-spacing utilities
     plugin(function({ matchUtilities, theme }) {
       matchUtilities(
@@ -183,6 +175,14 @@ module.exports = {
         { values: theme('borderSpacing', ) }
       )
     }),
+    // Filters
+    ...Object.values(filterPlugins),
+    // MSO utilities
+    require('tailwindcss-mso'),
+    // Email-safe box-shadow utilities
+    require('tailwindcss-box-shadow'),
+    // Email client targeting variants
+    require('tailwindcss-email-variants'),
     // Text decoration utilities
     plugin(function({ addUtilities }) {
       addUtilities({
