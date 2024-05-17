@@ -20,13 +20,17 @@
     "vitest": "^1.6.0"
   },
   "keywords": [
-    "tailwindcss",
-    "html-email"
+    "email-css",
+    "email-styles",
+    "html-email",
+    "responsive-email",
+    "maizzle",
+    "tailwindcss"
   ],
   "dependencies": {
     "tailwindcss-box-shadow": "^2.0.1",
     "tailwindcss-email-variants": "^3.0.0",
-    "tailwindcss-mso": "^1.4.1"
+    "tailwindcss-mso": "^1.4.2"
   },
   "peerDependencies": {
     "tailwindcss": ">=3.4.0"
