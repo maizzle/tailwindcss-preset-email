@@ -20,7 +20,7 @@ npm install tailwindcss-preset-email
 // tailwind.config.js
 module.exports = {
   presets: [
-    require('tailwindcss-email-preset'),
+    require('tailwindcss-preset-email'),
   ],
 }
 ```
@@ -33,7 +33,7 @@ You may override the preset by configuring Tailwind as you'd normally do.
 // tailwind.config.js
 module.exports = {
   presets: [
-    require('tailwindcss-email-preset'),
+    require('tailwindcss-preset-email'),
   ],
   theme: {
     screens: {
