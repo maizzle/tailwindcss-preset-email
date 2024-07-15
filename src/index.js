@@ -3,6 +3,7 @@ const { disabledFilterPlugins, ...filterPlugins } = require('./filters')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important: true,
   theme: {
     screens: {
       sm: {max: '600px'},

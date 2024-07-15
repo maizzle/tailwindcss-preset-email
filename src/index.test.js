@@ -33,6 +33,7 @@ function run(config, css = '@tailwind utilities', plugin = tailwindcss) {
   config = {
     ...{
       presets: [emailPreset],
+      important: false,
     },
     ...config,
   }
