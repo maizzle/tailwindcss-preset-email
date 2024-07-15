@@ -14,10 +14,10 @@
   "license": "MIT",
   "repository": "https://github.com/maizzle/tailwindcss-preset-email",
   "devDependencies": {
-    "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/coverage-v8": "^2.0.2",
     "np": "^10.0.5",
     "postcss": "^8.4.38",
-    "vitest": "^1.6.0"
+    "vitest": "^2.0.2"
   },
   "keywords": [
     "email-css",
