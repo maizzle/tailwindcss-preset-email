@@ -46,9 +46,7 @@ module.exports = {
 
 ### Configuration
 
-The plugin is basically a custom Tailwind CSS config that changes utility classes to use values that are better supported in email clients, either right in the config or by using plugins.
-
-Following is a list of the changes made to the default Tailwind CSS config.
+The preset is a custom Tailwind CSS config that changes utility classes to use values that are better supported in email clients, either right in the config or through plugins.
 
 ### important
 
@@ -62,6 +60,16 @@ The `screens` config uses a desktop-first approach now:
 
 ```js
 {
+  sm: {max: '600px'},
+  xs: {max: '425px'},
+}
+```
+
+When overriding `screens`, make sure the larger values are at the top of the object:
+
+```js
+{
+  md: {max: '768px'},
   sm: {max: '600px'},
   xs: {max: '425px'},
 }
@@ -103,9 +111,7 @@ borderRadius: {
 
 ### boxShadow
 
-`boxShadow` now uses the exact values from your config.
-
-This is done with the help of the [`tailwindcss-box-shadow`](https://github.com/maizzle/tailwindcss-box-shadow) plugin.
+`boxShadow` utilities use the exact values from your config.
 
 ```js
 boxShadow: {
@@ -258,12 +264,6 @@ Used for generating classes that are only supported by Microsoft Outlook's Word 
 
 Documentation: https://github.com/maizzle/tailwindcss-mso
 
-### tailwindcss-box-shadow
-
-Used for generating `box-shadow` utilities that use the exact values from your config. In contrast, the defaults in Tailwind CSS use CSS variables, which currently have poor support in email clients.
-
-Documentation: https://github.com/maizzle/tailwindcss-box-shadow
-
 ### tailwindcss-email-variants
 
 A Tailwind CSS plugin that provides variants for email client targeting hacks used in HTML emails.
@@ -277,16 +277,30 @@ A custom plugin that generates `border-spacing` utilities that use static values
 Here's a diff of the output between Tailwind's original and the custom plugin:
 
 ```diff
-+ tailwindcss-preset-email
-- tailwindcss
-
-+ .border-spacing-x-1 {
-+   border-spacing: 4px 0
-+ }
 - .border-spacing-x-1 {
 -   --tw-border-spacing-x: 4px;
 -   border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 - }
++ .border-spacing-x-1 {
++   border-spacing: 4px 0
++ }
+```
+
+### boxShadow
+
+A custom plugin that generates `box-shadow` utilities that use static values instead of CSS variables.
+
+The downside to this is that shadow color utilities are disabled too.
+
+```diff
+- .shadow-sm {
+-   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+-   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+-   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+- }
++ .shadow-sm {
++   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05)
++ }
 ```
 
 ### Filters
@@ -319,13 +333,8 @@ A custom plugin that generates `text-decoration` utilities that use the `text-de
 Here's a diff of the output between Tailwind's original and the custom plugin:
 
 ```diff
-+ tailwindcss-preset-email
-- tailwindcss
-
-+ .underline {
-+   text-decoration: underline
-+ }
-- .underline {
+.underline {
 -   text-decoration-line: underline;
-- }
++   text-decoration: underline
+}
 ```

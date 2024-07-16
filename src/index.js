@@ -177,6 +177,8 @@ module.exports = {
     backgroundOpacity: false,
     borderOpacity: false,
     borderSpacing: false,
+    boxShadow: false,
+    boxShadowColor: false,
     divideOpacity: false,
     placeholderOpacity: false,
     textOpacity: false,
@@ -184,8 +186,8 @@ module.exports = {
     ...disabledFilterPlugins,
   },
   plugins: [
-    // Border-spacing utilities
-    plugin(function({ matchUtilities, theme }) {
+    plugin(function({ matchUtilities, addUtilities, theme }) {
+      // Border-spacing utilities
       matchUtilities(
         {
           'border-spacing': (value) => ({
@@ -200,23 +202,32 @@ module.exports = {
         },
         { values: theme('borderSpacing', ) }
       )
-    }),
-    // Filters
-    ...Object.values(filterPlugins),
-    // MSO utilities
-    require('tailwindcss-mso'),
-    // Email-safe box-shadow utilities
-    require('tailwindcss-box-shadow'),
-    // Email client targeting variants
-    require('tailwindcss-email-variants'),
-    // Text decoration utilities
-    plugin(function({ addUtilities }) {
+
+      // Box-shadow utilities
+      matchUtilities(
+        {
+          shadow: value => ({
+            boxShadow: value
+          }),
+        },
+        {
+          values: theme('boxShadow')
+        }
+      )
+
+      // Text decoration utilities
       addUtilities({
         '.underline': { 'text-decoration': 'underline' },
         '.overline': { 'text-decoration': 'overline' },
         '.line-through': { 'text-decoration': 'line-through' },
         '.no-underline': { 'text-decoration': 'none' },
-      });
+      })
     }),
+    // Filters
+    ...Object.values(filterPlugins),
+    // MSO utilities
+    require('tailwindcss-mso'),
+    // Email client targeting variants
+    require('tailwindcss-email-variants'),
   ],
 }
