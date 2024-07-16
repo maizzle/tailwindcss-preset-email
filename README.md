@@ -61,7 +61,7 @@ The `screens` config uses a desktop-first approach now:
 ```js
 {
   sm: {max: '600px'},
-  xs: {max: '425px'},
+  xs: {max: '430px'},
 }
 ```
 
@@ -71,7 +71,7 @@ When overriding `screens`, make sure the larger values are at the top of the obj
 {
   md: {max: '768px'},
   sm: {max: '600px'},
-  xs: {max: '425px'},
+  xs: {max: '430px'},
 }
 ```
 
