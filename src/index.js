@@ -10,6 +10,10 @@ module.exports = {
       xs: {max: '425px'},
     },
     extend: {
+      colors: {
+        black: '#000001',
+        white: '#fffffe',
+      },
       spacing: {
         screen: '100vw',
         full: '100%',

@@ -75,6 +75,17 @@ When overriding `screens`, make sure the larger values are at the top of the obj
 }
 ```
 
+### colors
+
+The `black` and `white` color values are updated to prevent some email clients from automatically inverting them in dark mode.
+
+```js
+colors: {
+  black: '#000001',
+  white: '#fffffe',
+}
+```
+
 ### spacing
 
 The `spacing` scale has been updated to use `px` values instead of `rem`.
