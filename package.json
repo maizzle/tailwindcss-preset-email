@@ -2,6 +2,8 @@
   "name": "tailwindcss-preset-email",
   "version": "1.2.0",
   "description": "Tailwind CSS config preset for HTML emails",
+  "license": "MIT",
+  "repository": "https://github.com/maizzle/tailwindcss-preset-email",
   "main": "src/index.js",
   "files": [
     "src"
@@ -11,12 +13,17 @@
     "release": "npx np",
     "test": "vitest run --coverage"
   },
-  "license": "MIT",
-  "repository": "https://github.com/maizzle/tailwindcss-preset-email",
   "devDependencies": {
-    "@vitest/coverage-v8": "^2.0.2",
-    "postcss": "^8.4.38",
-    "vitest": "^2.0.2"
+    "@vitest/coverage-v8": "^2.0.3",
+    "postcss": "^8.4.39",
+    "vitest": "^2.0.3"
+  },
+  "dependencies": {
+    "tailwindcss-email-variants": "^3.0.0",
+    "tailwindcss-mso": "^1.4.2"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.4.0"
   },
   "keywords": [
     "email-css",
@@ -25,12 +32,5 @@
     "responsive-email",
     "maizzle",
     "tailwindcss"
-  ],
-  "dependencies": {
-    "tailwindcss-email-variants": "^3.0.0",
-    "tailwindcss-mso": "^1.4.2"
-  },
-  "peerDependencies": {
-    "tailwindcss": ">=3.4.0"
-  }
+  ]
 }
