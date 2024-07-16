@@ -7,8 +7,8 @@
     "src"
   ],
   "scripts": {
-    "release": "npx np",
     "dev": "vitest",
+    "release": "npx np",
     "test": "vitest run --coverage"
   },
   "license": "MIT",
@@ -27,7 +27,6 @@
     "tailwindcss"
   ],
   "dependencies": {
-    "tailwindcss-box-shadow": "^2.0.1",
     "tailwindcss-email-variants": "^3.0.0",
     "tailwindcss-mso": "^1.4.2"
   },
