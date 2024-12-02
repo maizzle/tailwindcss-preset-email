@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "tailwindcss-email-variants": "^3.0.2",
-    "tailwindcss-mso": "^1.4.4"
+    "tailwindcss-mso": "^2.0.0"
   },
   "peerDependencies": {
     "tailwindcss": ">=3.4.15"
