@@ -14,16 +14,16 @@
     "test": "vitest run --coverage"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^2.0.4",
-    "postcss": "^8.4.39",
-    "vitest": "^2.0.4"
+    "@vitest/coverage-v8": "^2.1.8",
+    "postcss": "^8.4.49",
+    "vitest": "^2.1.8"
   },
   "dependencies": {
-    "tailwindcss-email-variants": "^3.0.2",
-    "tailwindcss-mso": "^1.4.4"
+    "tailwindcss-email-variants": "^3.0.3",
+    "tailwindcss-mso": "^2.0.1"
   },
   "peerDependencies": {
-    "tailwindcss": ">=3.4.15"
+    "tailwindcss": ">=3.4.17"
   },
   "keywords": [
     "email-css",
