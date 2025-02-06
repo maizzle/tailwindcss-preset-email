@@ -6,7 +6,9 @@
 
 ## About
 
-This is a Tailwind CSS config preset that changes some utility classes to use values that are better supported in email clients. It also includes plugins that generate utility classes that are useful for building HTML emails.
+This is a Tailwind CSS v3.x config preset that changes some utility classes to use values that are better supported in email clients. It also includes plugins that generate utility classes that are useful for building HTML emails.
+
+For Tailwind CSS v4.x, see [maizzle/tailwindcss](https://github.com/maizzle/tailwindcss).
 
 ## Installation
 
